@@ -1,0 +1,75 @@
+name: tests
+
+on:
+  push:
+    branches: [v3]
+  pull_request:
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  php:
+    name: PHP ${{ matrix.php }} (${{ matrix.channel }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    continue-on-error: ${{ matrix.channel == 'experimental' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        channel: ['stable']
+        php: ['8.2', '8.3', '8.4', '8.5']
+
+        include:
+          - { php: '5.6', channel: 'legacy' }
+          - { php: '7.0', channel: 'legacy' }
+          - { php: '7.1', channel: 'legacy' }
+          - { php: '7.2', channel: 'legacy' }
+          - { php: '7.3', channel: 'legacy' }
+          - { php: '7.4', channel: 'legacy' }
+          - { php: '8.0', channel: 'legacy' }
+          - { php: '8.1', channel: 'legacy' }
+          - { php: 'nightly', channel: 'experimental' }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: curl, dom, xml
+          coverage: none
+          tools: none
+      - name: Point chpp.hattrick.org at localhost
+        run: echo '127.0.0.1 chpp.hattrick.org' | sudo tee -a /etc/hosts
+      - run: php tests/run.php
+
+  eol:
+    name: PHP ${{ matrix.php }} (${{ matrix.channel }}, ${{ matrix.image }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    continue-on-error: ${{ matrix.channel == 'experimental' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { php: '5.3.3', image: 'debian/eol:squeeze', distro: debian, suite: squeeze, channel: 'legacy' }
+          - { php: '5.4.45', image: 'debian/eol:wheezy', distro: debian, suite: wheezy, channel: 'legacy' }
+          - { php: '5.5.9', image: 'ubuntu:14.04', distro: ubuntu, suite: trusty, channel: 'legacy' }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Start the ${{ matrix.image }} container
+        run: |
+          docker run -d --name eol --hostname pht-tests \
+            --add-host chpp.hattrick.org:127.0.0.1 \
+            -v "$PWD:/pht:ro" -w /pht \
+            ${{ matrix.image }} sleep 3600
+      - name: Install PHP ${{ matrix.php }} from the distro archive
+        run: docker exec eol sh /pht/.github/eol-php.sh ${{ matrix.distro }} ${{ matrix.suite }} ${{ matrix.php }}
+      - name: Test
+        run: docker exec eol php tests/run.php

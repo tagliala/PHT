@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>playerdetails.xml</FileName>
+  <Version>2.6</Version>
+  <UserID>5</UserID>
+  <FetchedDate>2026-11-04 10:00:00</FetchedDate>
+  <Player>
+    <PlayerID>4242</PlayerID>
+    <FirstName>Example</FirstName>
+    <LastName>Player</LastName>
+    <NickName>Example</NickName>
+    <PlayerNumber>7</PlayerNumber>
+    <Age>24</Age>
+    <AgeDays>12</AgeDays>
+    <GenderID>1</GenderID>
+    <ArrivalDate>2024-01-01 00:00:00</ArrivalDate>
+    <TSI>1500</TSI>
+    <PlayerForm>7</PlayerForm>
+    <Experience>5</Experience>
+    <Loyalty>12</Loyalty>
+    <MotherClubBonus>false</MotherClubBonus>
+    <Leadership>4</Leadership>
+    <Salary>4200</Salary>
+    <IsAbroad>false</IsAbroad>
+    <Cards>0</Cards>
+    <InjuryLevel>0</InjuryLevel>
+    <StaminaSkill>6</StaminaSkill>
+    <KeeperSkill>1</KeeperSkill>
+    <DefenderSkill>5</DefenderSkill>
+    <PlaymakerSkill>6</PlaymakerSkill>
+    <WingerSkill>4</WingerSkill>
+    <PassingSkill>6</PassingSkill>
+    <ScorerSkill>4</ScorerSkill>
+    <SetPiecesSkill>3</SetPiecesSkill>
+    <PlayerSkills>
+      <StaminaSkill>6</StaminaSkill>
+      <KeeperSkill>1</KeeperSkill>
+      <DefenderSkill>5</DefenderSkill>
+      <PlaymakerSkill>6</PlaymakerSkill>
+      <WingerSkill>4</WingerSkill>
+      <PassingSkill>6</PassingSkill>
+      <ScorerSkill>4</ScorerSkill>
+      <SetPiecesSkill>3</SetPiecesSkill>
+    </PlayerSkills>
+  </Player>
+</HattrickData>
