@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>user.xml</FileName>
+  <Version>1.5</Version>
+  <UserID>5</UserID>
+  <FetchedDate>2026-11-04 10:00:00</FetchedDate>
+  <User>
+    <UserId>5</UserId>
+    <Loginname>example_manager</Loginname>
+    <Name>Example Manager</Name>
+    <LanguageId>1</LanguageId>
+    <LanguageName>English</LanguageName>
+    <CountryId>5</CountryId>
+    <CountryName>Italia</CountryName>
+    <CurrencyName>Euro</CurrencyName>
+    <CurrencyRate>1.0</CurrencyRate>
+    <LoginTime>2026-11-04 09:59:00</LoginTime>
+    <UserSupporterTier>platinum</UserSupporterTier>
+    <Avatar><AvatarUrl>http://example.org/avatar.png</AvatarUrl></Avatar>
+    <Teams>
+      <Team>
+        <TeamID>1001</TeamID>
+        <TeamId>1001</TeamId>
+        <TeamName>Example United</TeamName>
+        <IsPrimaryClub>true</IsPrimaryClub>
+        <LeagueID>5</LeagueID>
+      </Team>
+      <Team>
+        <TeamID>1002</TeamID>
+        <TeamId>1002</TeamId>
+        <TeamName>Example Reserves</TeamName>
+        <IsPrimaryClub>false</IsPrimaryClub>
+        <LeagueID>5</LeagueID>
+      </Team>
+    </Teams>
+  </User>
+</HattrickData>

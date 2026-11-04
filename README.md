@@ -151,3 +151,31 @@ CACHE_TTL              : set a default ttl in seconds for caching xml request, d
 MEMCACHED_SERVER_IP    : set ip of memcached server
 MEMCACHED_SERVER_PORT  : set port of memcached server
 ```
+
+## Tests
+
+No dependencies, no framework: the tests are plain PHP scripts so they also run
+on the oldest version the library supports.
+
+```sh
+php tests/run.php            # every test file
+php tests/run.php parsing    # one or more test files
+php tests/coverage.php       # line coverage, floors included
+php tests/run.php --slow     # not used; leak cases run by default
+```
+
+`tests/coverage.php` measures with `phpdbg`, which ships with PHP, and keeps the
+floors that currently hold: overall 3%, `Network/` 60%, `Utils/` 30%. They are a
+ratchet against regressions, not a target: `Xml/`, `Wrapper/` and the facade are
+about 88% of the executable lines and need response payloads the suite does not
+have yet. The leak cases are excluded from that run, because phpdbg's own opcode
+log makes their memory check fail.
+
+Every notice, warning and deprecation counts as a failure, and so does a crash
+while a class is declared. The tests never reach the network: the bootstrap
+points curl at a closed local port.
+
+Not covered, on purpose: the authenticated CHPP flow (no credentials in CI),
+real CHPP payloads (fixtures are minimal), TLS behaviour, Windows, the session,
+APC, memcached and redis cache drivers, file logging, and request paths other
+than a plain GET.
