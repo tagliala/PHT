@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HattrickData>
+  <FileName>teamdetails.xml</FileName>
+  <Version>3.6</Version>
+  <UserID>5</UserID>
+  <UserID>5</UserID>
+  <FetchedDate>2026-11-04 10:00:00</FetchedDate>
+  <Teams>
+    <Team>
+      <TeamID>1001</TeamID>
+      <TeamName>Example United</TeamName>
+      <IsPrimaryClub>true</IsPrimaryClub>
+      <LeagueID>5</LeagueID>
+      <UserId>5</UserId>
+      <Loginname>example_manager</Loginname>
+      <Country>
+        <CountryID>5</CountryID>
+        <CountryName>Italia</CountryName>
+        <CurrencyName>Euro</CurrencyName>
+        <CurrencyRate>1.0</CurrencyRate>
+      </Country>
+      <Arena>
+        <ArenaID>2002</ArenaID>
+        <ArenaName>Example Park</ArenaName>
+        <CurrentCapacity>20000</CurrentCapacity>
+      </Arena>
+      <FriendlyTeamID>0</FriendlyTeamID>
+      <NumberOfVictories>3</NumberOfVictories>
+      <NumberOfUndefeated>5</NumberOfUndefeated>
+    </Team>
+  </Teams>
+</HattrickData>
